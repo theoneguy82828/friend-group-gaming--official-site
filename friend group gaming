@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friend Group Gaming</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Friend Group Gaming | Official Site</title>
+    <meta name="description" content="Official home of Friend Group Gaming, formerly Friend Group Podcast. The friend group is back with an all new gaming series featuring new content, Minecraft, Roblox, and more. Managed by Friend Group Studios.">
+    <meta name="keywords" content="Friend Group Gaming, FGG, Friend Group Studios, Minecraft, Theonguy, Spacerealmgurdian, Psbox, Kingjayjay">
+    <meta name="author" content="Friend Group Studios">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -13,14 +19,12 @@
             font-family: 'Inter', sans-serif;
             background-color: #020617;
             color: #f1f5f9;
+            overflow-x: hidden;
         }
 
         .crt-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
             background-size: 100% 4px, 3px 100%;
@@ -29,250 +33,342 @@
             opacity: 0.1;
         }
 
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-out; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .pixel-border {
-            border-style: solid;
-            border-width: 4px;
-        }
+        .pixel-border { border: 4px solid; }
 
-        /* Styling for the Google Search Input to match theme */
-        .gsc-control-cse {
-            background-color: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-        }
-        .gsc-search-button-v2 {
-            background-color: #06b6d4 !important;
-            border-color: #06b6d4 !important;
-        }
-        .gsc-input-box {
-            background-color: #0f172a !important;
-            border: 2px solid #334155 !important;
-        }
-        input.gsc-input {
-            color: white !important;
-            background: none !important;
-        }
+        .gsc-control-cse { background-color: transparent !important; border: none !important; padding: 0 !important; }
+        .gsc-search-button-v2 { background-color: #06b6d4 !important; border-color: #06b6d4 !important; }
+        .gsc-input-box { background-color: #0f172a !important; border: 2px solid #334155 !important; }
+        input.gsc-input { color: white !important; background: none !important; }
     </style>
 </head>
 <body>
     <div class="crt-overlay"></div>
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-40 bg-slate-950/90 border-b-4 border-purple-600 py-4">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+        <div class="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-2 cursor-pointer" onclick="showTab('home')">
                 <div class="bg-cyan-500 p-1 rounded-sm">
                     <i data-lucide="gamepad-2" class="text-slate-950"></i>
                 </div>
-                <span class="font-black text-xl tracking-tighter italic">FGG</span>
+                <span class="font-black text-xl tracking-tighter italic text-white">FGG</span>
             </div>
 
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex gap-6 items-center">
-                <button onclick="showTab('home')" class="nav-link text-sm font-bold tracking-widest text-cyan-400">HOME</button>
-                <button onclick="showTab('members')" class="nav-link text-sm font-bold tracking-widest text-slate-400">MEMBERS</button>
-                <button onclick="showTab('schedule')" class="nav-link text-sm font-bold tracking-widest text-slate-400">CALENDAR</button>
-                <button onclick="showTab('search')" class="nav-link text-sm font-bold tracking-widest text-slate-400 flex items-center gap-1"><i data-lucide="search" size="14"></i> SEARCH</button>
-                <button onclick="showTab('business')" class="nav-link text-sm font-bold tracking-widest text-slate-400">BUSINESS</button>
-                <button onclick="showTab('studios')" class="nav-link text-sm font-bold tracking-widest text-slate-400">STUDIOS</button>
-                <a href="https://youtube.com/@freindgrouppodcast?si=4rCREbBkc-bpmLko" target="_blank" class="bg-red-600 px-4 py-2 text-xs font-black italic flex items-center gap-2">
-                    <i data-lucide="youtube" size="16"></i> SUBSCRIBE
+            <div class="hidden lg:flex gap-5 items-center text-white">
+                <button onclick="showTab('home')" class="text-[11px] font-bold tracking-widest text-cyan-400 hover:text-white transition">HOME</button>
+                <button onclick="showTab('members')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition">MEMBERS</button>
+                <button onclick="showTab('schedule')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">Calendar</button>
+                <button onclick="showTab('vault')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">Podcast Vault</button>
+                <button onclick="showTab('shop')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">Shop</button>
+                <button onclick="showTab('community')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">Community</button>
+                <button onclick="showTab('faq')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">FAQ</button>
+                <button onclick="showTab('search')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition flex items-center gap-1"><i data-lucide="search" size="12"></i> SEARCH</button>
+                <button onclick="showTab('business')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition">BUSINESS</button>
+                <button onclick="showTab('studios')" class="text-[11px] font-bold tracking-widest text-slate-400 hover:text-white transition">STUDIOS</button>
+                <a href="https://youtube.com/@freindgrouppodcast?si=4rCREbBkc-bpmLko" target="_blank" class="bg-red-600 px-3 py-2 text-[10px] font-black italic flex items-center gap-2 hover:bg-red-500 transition">
+                    <i data-lucide="youtube" size="14"></i> SUBSCRIBE
                 </a>
             </div>
 
-            <!-- Mobile Toggle -->
-            <button class="md:hidden text-cyan-400" onclick="toggleMenu()">
-                <i data-lucide="menu" id="menu-icon"></i>
+            <button class="lg:hidden text-cyan-400" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed inset-0 z-30 bg-slate-950 flex flex-col items-center justify-center gap-8">
-        <button onclick="showTab('home')" class="text-3xl font-black text-cyan-400">HOME</button>
-        <button onclick="showTab('members')" class="text-3xl font-black text-cyan-400">MEMBERS</button>
-        <button onclick="showTab('schedule')" class="text-3xl font-black text-cyan-400">CALENDAR</button>
-        <button onclick="showTab('search')" class="text-3xl font-black text-cyan-400">SEARCH</button>
-        <button onclick="showTab('business')" class="text-3xl font-black text-cyan-400">BUSINESS</button>
-        <button onclick="showTab('studios')" class="text-3xl font-black text-cyan-400">STUDIOS</button>
+    <div id="mobile-menu" class="hidden fixed inset-0 z-30 bg-slate-950 flex flex-col items-center justify-center gap-6 font-black italic text-2xl overflow-y-auto pt-20">
+        <button onclick="showTab('home')" class="text-cyan-400">HOME</button>
+        <button onclick="showTab('members')" class="text-slate-400">MEMBERS</button>
+        <button onclick="showTab('schedule')" class="text-slate-400">CALENDAR</button>
+        <button onclick="showTab('vault')" class="text-slate-400">PODCAST VAULT</button>
+        <button onclick="showTab('shop')" class="text-slate-400">SHOP</button>
+        <button onclick="showTab('community')" class="text-slate-400">COMMUNITY</button>
+        <button onclick="showTab('faq')" class="text-slate-400">FAQ</button>
+        <button onclick="showTab('search')" class="text-slate-400">SEARCH</button>
+        <button onclick="showTab('business')" class="text-slate-400">BUSINESS</button>
+        <button onclick="showTab('studios')" class="text-slate-400">STUDIOS</button>
     </div>
 
     <main class="pt-24 min-h-screen">
-        <!-- HOME -->
+        <!-- HOME SECTION -->
         <section id="home" class="tab-content active">
             <div class="max-w-6xl mx-auto px-6 text-center py-20">
-                <div class="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 mb-4 tracking-widest">LEVEL 1: START</div>
+                <div class="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 mb-4 tracking-widest uppercase">LEVEL 1: START</div>
                 <h1 class="text-6xl md:text-8xl font-black italic tracking-tighter text-white drop-shadow-[0_5px_0_rgba(6,182,212,1)] mb-6">
                     FRIEND GROUP <br><span class="text-cyan-400">GAMING</span>
                 </h1>
-                <p class="text-slate-400 max-w-lg mx-auto mb-10 text-xl">The evolution of the Friend Group Podcast. Home of the Minecraft main series.</p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <button onclick="showTab('members')" class="bg-cyan-500 text-slate-950 font-black px-8 py-4 rounded-none">MEET THE SQUAD</button>
-                    <a href="https://youtube.com/@freindgrouppodcast?si=4rCREbBkc-bpmLko" target="_blank" class="border-4 border-white text-white font-black px-8 py-4 rounded-none flex items-center justify-center gap-2">
-                        <i data-lucide="youtube"></i> WATCH NOW
+                <p class="text-slate-400 max-w-lg mx-auto mb-10 text-xl font-medium">The official home of the evolution of the Friend Group Podcast.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-20">
+                    <button onclick="showTab('members')" class="bg-cyan-500 text-slate-950 font-black px-8 py-4 hover:bg-cyan-400 transition uppercase">Meet The Squad</button>
+                    <a href="https://youtube.com/@freindgrouppodcast?si=4rCREbBkc-bpmLko" target="_blank" class="border-4 border-white text-white font-black px-8 py-4 flex items-center justify-center gap-2 hover:bg-white hover:text-slate-950 transition uppercase">
+                        <i data-lucide="youtube"></i> Watch Now
                     </a>
                 </div>
 
-                <div class="mt-24 grid md:grid-cols-2 gap-12 text-left bg-slate-900/50 p-8 pixel-border border-slate-800">
-                    <div>
-                        <h2 class="text-3xl font-black text-purple-500 mb-4 italic">ABOUT US</h2>
-                        <p class="text-slate-300">Friend Group Gaming is a channel made by Friend Group Studios. It replaces the Friend Group Podcast and features Minecraft, Roblox, Fortnite, and Rec Room.</p>
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <i data-lucide="gamepad-2" size="100" class="text-cyan-500 opacity-20"></i>
-                    </div>
+                <div class="bg-slate-900/50 p-8 border-t-4 border-cyan-500 text-left max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-black italic text-cyan-400 mb-4 uppercase">About Us</h2>
+                    <p class="text-slate-300 leading-relaxed mb-4">
+                        Friend Group Gaming is a channel made by Friend Group Studios. It is the new project for the group and the replacement for the Friend Group Podcast.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed">
+                        We are a gaming channel consisting of gaming episodes and our main series, Minecraft. We do gameplay of several different games like Roblox, Fortnite, Rec Room, and more.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- MEMBERS -->
+        <!-- SHOP SECTION -->
+        <section id="shop" class="tab-content">
+            <div class="max-w-6xl mx-auto px-6 py-12">
+                <h2 class="text-5xl font-black italic text-center mb-6 uppercase text-white tracking-tighter">OFFICIAL <span class="text-cyan-400">GEAR</span></h2>
+                
+                <!-- PAYMENT DISCLAIMER -->
+                <div class="max-w-2xl mx-auto bg-amber-950/40 border-2 border-amber-600 p-4 mb-12 flex items-start gap-4">
+                    <i data-lucide="info" class="text-amber-500 mt-1 shrink-0"></i>
+                    <p class="text-xs text-amber-200 uppercase font-black italic leading-tight">
+                        NOTICE: All purchases are fulfilled by Canva. All payments go directly to Canva for printing and shipping costs. No money from merch sales goes directly to the Friend Group Gaming channel.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- SHIRT -->
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col items-center">
+                        <div class="w-full h-56 bg-slate-950 flex items-center justify-center mb-6">
+                            <i data-lucide="shirt" size="80" class="text-purple-500 opacity-50"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-white italic uppercase mb-2">Legacy Crest Tee</h3>
+                        <p class="text-slate-400 text-xs mb-4 text-center italic">Classic design featuring the Friend Group legacy emblem.</p>
+                        <a href="https://www.canva.com/design/DAHDv6nawQ8/auYjwLxP3pSS-ovvGwwrBQ/edit?utm_content=DAHDv6nawQ8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full bg-cyan-500 text-slate-950 font-black py-3 text-center hover:bg-cyan-400 transition">BUY ON CANVA</a>
+                    </div>
+                    
+                    <!-- SWEATER -->
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col items-center">
+                        <div class="w-full h-56 bg-slate-950 flex items-center justify-center mb-6">
+                            <i data-lucide="shirt" size="80" class="text-cyan-500 opacity-50"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-white italic uppercase mb-2">FGG Official Sweater</h3>
+                        <p class="text-slate-400 text-xs mb-4 text-center italic">Heavy-duty gaming sweater for maximum comfort.</p>
+                        <a href="https://www.canva.com/design/DAHDwNFvH_Q/Pdnn_8_ExCwls2DgnDjx3g/edit?utm_content=DAHDwNFvH_Q&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full bg-cyan-500 text-slate-950 font-black py-3 text-center hover:bg-cyan-400 transition">BUY ON CANVA</a>
+                    </div>
+                </div>
+                
+                <p class="mt-16 text-center text-[10px] text-slate-500 uppercase font-bold italic tracking-[0.2em] underline decoration-slate-800">
+                    Designs powered by Canva Templates & Friend Group Studios Artists
+                </p>
+            </div>
+        </section>
+
+        <!-- MEMBERS SECTION -->
         <section id="members" class="tab-content">
             <div class="max-w-6xl mx-auto px-6 py-12">
-                <h2 class="text-4xl font-black italic text-center mb-12 uppercase">The Squad</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-slate-900 pixel-border border-purple-500 p-6">
-                        <h3 class="text-xl font-black text-cyan-400 mb-2 italic">THEONGUY</h3>
-                        <p class="text-xs text-slate-400 mb-4">YouTuber, author, artist. Owner of Theonguy Studios and main founder of Friend Group Studios.</p>
-                        <p class="text-[10px] font-bold text-purple-400">ROLES: Head Editor, Marketing, Planning, Upload Manager.</p>
+                <h2 class="text-5xl font-black italic text-center mb-16 uppercase text-white">The Squad</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-black text-cyan-400 italic mb-2 uppercase">Theonguy</h3>
+                            <p class="text-sm text-slate-300 mb-4 italic leading-relaxed">YouTuber, author, and artist. Owner/founder of Theonguy Studios and main founder of FGS.</p>
+                        </div>
+                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest pt-4 border-t border-slate-800">Founder / Head Editor</p>
                     </div>
-                    <div class="bg-slate-900 pixel-border border-purple-500 p-6">
-                        <h3 class="text-xl font-black text-cyan-400 mb-2 italic">SPACEREALMGURDIAN</h3>
-                        <p class="text-xs text-slate-400 mb-4">YouTuber and professional gamer. Original founder of the podcast and Studios owner.</p>
-                        <p class="text-[10px] font-bold text-purple-400">ROLES: Head Planner, Social Media Manager, Co-Scheduler.</p>
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-black text-cyan-400 italic mb-2 uppercase">Spacerealmgurdian</h3>
+                            <p class="text-sm text-slate-300 mb-4 italic leading-relaxed">Professional gamer and current owner of Friend Group Studios.</p>
+                        </div>
+                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest pt-4 border-t border-slate-800">Studios Owner / Social Lead</p>
                     </div>
-                    <div class="bg-slate-900 pixel-border border-purple-500 p-6">
-                        <h3 class="text-xl font-black text-cyan-400 mb-2 italic">PSBOX</h3>
-                        <p class="text-xs text-slate-400 mb-4">Famous YouTuber (3k+ subs). Focuses on subscriber count videos and gaming content.</p>
-                        <p class="text-[10px] font-bold text-purple-400">ROLES: Main Designer & Artist. Thumbnail and Promo Creator.</p>
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-black text-cyan-400 italic mb-2 uppercase">Psbox</h3>
+                            <p class="text-sm text-slate-300 mb-4 italic leading-relaxed">Famous YouTuber (3,000+ subs) specializing in community content.</p>
+                        </div>
+                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest pt-4 border-t border-slate-800">Lead Designer</p>
                     </div>
-                    <div class="bg-slate-900 pixel-border border-purple-500 p-6">
-                        <h3 class="text-xl font-black text-cyan-400 mb-2 italic">KINGJAYJAY</h3>
-                        <p class="text-xs text-slate-400 mb-4">Member of the gaming channel. Appeared in the legendary deleted Episode 2 of the podcast.</p>
-                        <p class="text-[10px] font-bold text-purple-400">ROLES: Member and Scheduling Assistant.</p>
+                    <div class="bg-slate-900 pixel-border border-purple-500 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-black text-cyan-400 italic mb-2 uppercase">Kingjayjay</h3>
+                            <p class="text-sm text-slate-300 mb-4 italic leading-relaxed">Appeared in the legendary deleted Episode 2 of the podcast.</p>
+                        </div>
+                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest pt-4 border-t border-slate-800">Planning Asst.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SCHEDULE -->
+        <!-- SCHEDULE SECTION -->
         <section id="schedule" class="tab-content">
             <div class="max-w-4xl mx-auto px-6 py-12">
-                <div class="bg-amber-500/10 border-2 border-amber-500 p-6 mb-8 flex gap-4">
-                    <i data-lucide="alert-triangle" class="text-amber-500"></i>
-                    <p class="text-amber-200 text-sm font-bold italic">DATES ARE ESTIMATES. FILING DATES SUBJECT TO CHANGES AND DELAYS AT ANY TIME.</p>
-                </div>
                 <div class="bg-slate-900 p-8 pixel-border border-cyan-500">
-                    <h2 class="text-3xl font-black italic mb-8 uppercase flex items-center gap-2">
-                        <i data-lucide="calendar"></i> FILMING CALENDAR
-                    </h2>
+                    <h2 class="text-3xl font-black italic mb-8 uppercase flex items-center gap-2"><i data-lucide="calendar"></i> Filming Calendar</h2>
                     <div class="space-y-6">
-                        <div class="bg-slate-950 p-6 border-l-8 border-purple-500">
-                            <h3 class="text-2xl font-black italic">EPISODE 2 FILING</h3>
-                            <p class="text-cyan-400 font-mono text-xl">APRIL 2nd - APRIL 11th</p>
+                        <div class="bg-slate-950 p-8 border-l-8 border-purple-500 relative">
+                            <div class="absolute top-0 right-0 p-2 bg-purple-600 text-[10px] font-black uppercase tracking-widest">Active Target</div>
+                            <h3 class="text-2xl font-black italic text-white mb-2 uppercase">Episode 2 Filing</h3>
+                            <p class="text-cyan-400 font-mono text-xl uppercase tracking-widest">April 2nd - April 11th</p>
                         </div>
-                        <div class="bg-slate-950 p-6 border-l-8 border-slate-700">
-                            <h3 class="text-2xl font-black italic opacity-50">EPISODE 3 FILING</h3>
-                            <p class="text-slate-600 font-mono text-xl">APRIL 20th - MAY</p>
+                        <div class="bg-slate-950 p-8 border-l-8 border-slate-700 relative opacity-60">
+                            <h3 class="text-2xl font-black italic text-white mb-2 uppercase">Episode 3 Filing</h3>
+                            <p class="text-slate-400 font-mono text-xl uppercase tracking-widest">April 20th - May (TBD)</p>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-xs text-amber-500 italic font-bold uppercase tracking-widest">* Dates are estimates and subject to change based on production needs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PODCAST VAULT SECTION -->
+        <section id="vault" class="tab-content">
+            <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+                <h2 class="text-5xl font-black italic mb-6 uppercase text-white tracking-tighter">Podcast <span class="text-red-500">Vault</span></h2>
+                <p class="text-slate-400 mb-12">Exploring the history and "lost media" of the Friend Group Podcast.</p>
+                
+                <div class="grid gap-6 text-left">
+                    <div class="bg-slate-900 p-6 border-b-4 border-red-600">
+                        <h3 class="text-xl font-black text-white italic uppercase mb-2 underline decoration-red-600">The Legacy</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">Before the gaming channel, we were the Friend Group Podcast. It was where the squad first came together to talk about everything and nothing.</p>
+                    </div>
+                    <div class="bg-slate-950 p-6 border-b-4 border-slate-700">
+                        <h3 class="text-xl font-black text-white italic uppercase mb-2 underline decoration-slate-700">The Deleted Files</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">"Episode 2" remains one of the most famous pieces of Friend Group history. While most of it is gone, the impact it had on the group's planning led us to where we are today.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY SECTION -->
+        <section id="community" class="tab-content">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <div class="bg-slate-900 p-10 pixel-border border-indigo-500">
+                    <h2 class="text-4xl font-black italic mb-6 uppercase text-white flex items-center gap-3">
+                        <i data-lucide="users"></i> Community Hub
+                    </h2>
+                    <p class="text-slate-300 mb-10 text-lg">Join the official Friend Group Gaming community to chat with the squad and other fans!</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-slate-950 p-6 border-2 border-indigo-600 flex flex-col items-center text-center">
+                            <i data-lucide="message-square" class="text-indigo-400 mb-4" size="48"></i>
+                            <h3 class="font-black italic text-white text-xl mb-2">OFFICIAL DISCORD</h3>
+                            <p class="text-slate-500 text-xs mb-6 uppercase font-bold tracking-widest">[Link Coming Soon]</p>
+                            <button disabled class="bg-slate-800 text-slate-500 font-black px-6 py-2 cursor-not-allowed">LOCKED</button>
+                        </div>
+                        <div class="bg-slate-950 p-6 border-2 border-red-600 flex flex-col items-center text-center">
+                            <i data-lucide="youtube" class="text-red-500 mb-4" size="48"></i>
+                            <h3 class="font-black italic text-white text-xl mb-2">YOUTUBE COMMUNITY</h3>
+                            <p class="text-slate-500 text-xs mb-6 uppercase font-bold tracking-widest">Live Now</p>
+                            <a href="https://youtube.com/@freindgrouppodcast?si=4rCREbBkc-bpmLko" target="_blank" class="bg-red-600 text-white font-black px-6 py-2 hover:bg-red-500 transition">VISIT CHANNEL</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEARCH TAB -->
+        <!-- FAQ SECTION -->
+        <section id="faq" class="tab-content">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-5xl font-black italic text-center mb-12 uppercase text-white tracking-tighter">F.A.Q.</h2>
+                <div class="space-y-4">
+                    <details class="group bg-slate-900 p-6 border-l-4 border-cyan-500 cursor-pointer">
+                        <summary class="font-black text-xl italic uppercase text-white flex justify-between items-center">
+                            Why did the Podcast end?
+                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-slate-300 leading-relaxed">The podcast was a great start, but we wanted to focus more on gaming and high-energy content. Friend Group Gaming is the natural evolution of that original spirit.</p>
+                    </details>
+                    <details class="group bg-slate-900 p-6 border-l-4 border-cyan-500 cursor-pointer">
+                        <summary class="font-black text-xl italic uppercase text-white flex justify-between items-center">
+                            What is the main game you play?
+                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-slate-300 leading-relaxed">Our primary series is focused on Minecraft, but we also play Roblox, Fortnite, and Rec Room frequently.</p>
+                    </details>
+                    <details class="group bg-slate-900 p-6 border-l-4 border-cyan-500 cursor-pointer">
+                        <summary class="font-black text-xl italic uppercase text-white flex justify-between items-center">
+                            How can I join the squad?
+                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-slate-300 leading-relaxed">We aren't currently looking for new official members, but the best way to be involved is to join our Community Hub and Discord (when it goes live)!</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH SECTION -->
         <section id="search" class="tab-content">
             <div class="max-w-4xl mx-auto px-6 py-12">
                 <div class="bg-slate-900 pixel-border border-cyan-500 p-8">
-                    <h2 class="text-3xl font-black italic mb-6 uppercase flex items-center gap-2">
-                        <i data-lucide="search"></i> Channel Search
-                    </h2>
-                    <p class="text-slate-400 mb-8 text-sm italic">Search for videos, episodes, or group news across the web.</p>
-                    
-                    <!-- Google Custom Search Code -->
+                    <h2 class="text-3xl font-black italic mb-6 uppercase flex items-center gap-2"><i data-lucide="search"></i> Channel Search</h2>
+                    <p class="text-slate-400 mb-6 text-sm">Search for videos, member news, and gaming content.</p>
                     <script async src="https://cse.google.com/cse.js?cx=53cc48348fe9d4118"></script>
                     <div class="gcse-search"></div>
                 </div>
             </div>
         </section>
 
-        <!-- BUSINESS -->
+        <!-- BUSINESS SECTION -->
         <section id="business" class="tab-content">
             <div class="max-w-4xl mx-auto px-6 py-12">
                 <div class="bg-slate-900 pixel-border border-l-8 border-cyan-500 p-10">
-                    <h2 class="text-3xl font-black italic mb-6">BUSINESS</h2>
-                    <p class="text-slate-300 mb-6">We do sponsorships for brands. Reach a large audience through our network and YouTuber members.</p>
+                    <h2 class="text-3xl font-black italic mb-6 uppercase">Business & Sponsorships</h2>
+                    <p class="text-slate-300 text-lg mb-8">Reach a large audience through our network of high-intake channels. For all inquiries, please reach out via email.</p>
                     <div class="bg-slate-950 p-6 border-2 border-slate-800">
-                        <p class="text-xs text-cyan-400 font-bold uppercase tracking-widest mb-2">Contact Email</p>
-                        <a href="mailto:drangongamer09789@gmail.com" class="text-2xl font-mono text-white break-all">drangongamer09789@gmail.com</a>
+                        <p class="text-xs text-slate-500 uppercase font-black tracking-widest mb-2">Management Email</p>
+                        <a href="mailto:drangongamer09789@gmail.com" class="text-2xl font-mono text-white hover:text-cyan-400 transition-colors break-all">drangongamer09789@gmail.com</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STUDIOS -->
+        <!-- STUDIOS SECTION -->
         <section id="studios" class="tab-content">
             <div class="max-w-4xl mx-auto px-6 py-12">
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="md:col-span-2">
-                        <h2 class="text-4xl font-black italic mb-6">FRIEND GROUP <br><span class="text-purple-500">STUDIOS</span></h2>
-                        <p class="text-slate-300">The parent company that owns and controls Friend Group Gaming and the former podcast. Founded to manage and operate our digital media ventures.</p>
-                    </div>
-                    <div class="bg-slate-900 p-6 pixel-border border-purple-600">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-4">OWNERSHIP</h4>
-                        <p class="font-bold mb-2 text-white">Spacerealmgurdian</p>
-                        <p class="font-bold text-white">Theonguy</p>
-                    </div>
+                <h2 class="text-5xl font-black italic mb-8 uppercase text-white tracking-tighter">Friend Group <br><span class="text-purple-500">Studios</span></h2>
+                <div class="bg-slate-900 p-10 pixel-border border-purple-500">
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                        Friend Group Studios is the main business that owns, operates, and maintains Friend Group Gaming and the former Friend Group Podcast.
+                    </p>
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                        We are the main parent company. We are the entity that directly owns and controls both the podcast and gaming projects.
+                    </p>
+                    <p class="text-slate-300 text-lg leading-relaxed border-t border-slate-800 pt-6">
+                        Founded alongside the podcast, the studios exist today to manage the production, branding, and growth of our collective digital projects.
+                    </p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="py-12 border-t-4 border-slate-900 text-center">
+        <h4 class="font-black italic text-white text-xl mb-1 tracking-tighter uppercase">Friend Group Studios</h4>
         <p class="text-slate-500 text-[10px] font-black tracking-widest uppercase">Copyright © Friend Group Studios 2026</p>
     </footer>
 
     <script>
         function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            const targetTab = document.getElementById(tabId);
-            if(targetTab) targetTab.classList.add('active');
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('text-cyan-400');
-                link.classList.add('text-slate-400');
-            });
-            
-            // Highlight active link
-            if(event && event.currentTarget && event.currentTarget.classList.contains('nav-link')) {
-                event.currentTarget.classList.remove('text-slate-400');
-                event.currentTarget.classList.add('text-cyan-400');
-            }
-
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
             document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo(0, 0);
+            
+            // Update active nav button styles
+            const navButtons = document.querySelectorAll('nav button, #mobile-menu button');
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('onclick') === `showTab('${tabId}')`) {
+                    btn.classList.add('text-cyan-400');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.add('text-slate-400');
+                    btn.classList.remove('text-cyan-400');
+                }
+            });
         }
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         lucide.createIcons();
     </script>
 </body>
